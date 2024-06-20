@@ -8,7 +8,7 @@ CREATE DATABASE lumen;
 CREATE TABLE BLOG (
     ID_Blog SERIAL PRIMARY KEY,
     Title VARCHAR(100),
-    Frage TEXT
+    Question TEXT
 );
 
 
