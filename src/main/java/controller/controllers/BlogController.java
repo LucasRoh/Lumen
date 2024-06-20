@@ -1,10 +1,10 @@
 package controller.controllers;
 
 import controller.services.BlogService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import models.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,13 +27,6 @@ public class BlogController {
     }
 
     @GetMapping(path = "")
-    @Operation(summary = "Get all blogs")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Blogs found", content =
-            @Content(mediaType = "application/json", array = @ArraySchema(
-                    schema = @Schema(implementation = Blog.class)))),
-            @ApiResponse(responseCode = "404", description = "Blog not found", content =
-            @Content)})
     public Iterable<Blog> getAll() {
         try {
             return blogService.findAll();
@@ -43,13 +36,6 @@ public class BlogController {
     }
 
     @GetMapping(path = "{id}")
-    @Operation(summary = "Get a blog by id")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Canton found", content =
-            @Content(mediaType = "application/json", schema =
-            @Schema(implementation = Blog.class))),
-            @ApiResponse(responseCode = "404", description = "Blog not found", content =
-            @Content)})
     public Blog get(@PathVariable String id) {
         try {
             return blogService.findById(id);
@@ -59,16 +45,7 @@ public class BlogController {
     }
 
     @PutMapping(path = "{id}", consumes = "application/json")
-    @Operation(summary = "Update a blog")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Blog was updated successfully"),
-            @ApiResponse(responseCode = "400", description = "Validation failed"),
-            @ApiResponse(responseCode = "403", description = "Access not allowed"),
-            @ApiResponse(responseCode = "404", description = "Blog was not found"),
-    })
     public void update(@PathVariable String id, @Valid @RequestBody Blog blog) {
-        User loggedInUser = userService.findByUsername(loggedInUsername);
-
         try {
             blogService.update(id, blog);
         } catch (RuntimeException e) {
@@ -77,13 +54,7 @@ public class BlogController {
     }
 
     @GetMapping(path = "{id}/posts")
-    @Operation(summary = "Get a blog's answers")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful", content =
-            @Content(mediaType = "application/json", array = @ArraySchema(
-                    schema = @Schema(implementation = Post.class)))),
-            @ApiResponse(responseCode = "404", description = "Blog was not found")})
-    public Iterable<Post> getFeedbacks(@PathVariable String id) {
+    public Iterable<Post> getPosts(@PathVariable String id) {
         try {
             return blogService.findById(id).getPosts();
         } catch (EntityNotFoundException e) {
