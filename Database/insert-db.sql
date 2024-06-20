@@ -1,3 +1,5 @@
+\c lumen
+
 
 INSERT INTO Blog (title, question) VALUES
                                        ('Wie installiere ich Linux?', 'Kann jemand die Schritte zur Installation von Linux erläutern?'),
