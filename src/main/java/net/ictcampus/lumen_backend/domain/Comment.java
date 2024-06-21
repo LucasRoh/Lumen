@@ -29,15 +29,13 @@ public class Comment {
     @Setter
     @Getter
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    @JsonBackReference
+    @JoinColumn(name = "ID_Post")
     private Post post;
 
     @Setter
     @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
-    @JsonBackReference
     private Account account;
 
 }
