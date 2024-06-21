@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Comment")
+@Table(name = "Comment")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,11 @@ public class Comment {
 
     @NotNull
     @NotBlank
-private String comment;
-@ManyToOne
-@JoinColumn(name = "post_id")
-@JsonBackReference
-private Post post;
+    private String comment;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    @JsonBackReference
+    private Post post;
 
     @ManyToOne
     @JoinColumn(name = "ID_Account")
