@@ -23,9 +23,9 @@ private String comment;
 private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "ID_Account")
     @JsonBackReference
-    private User user;
+    private Account account;
 
 
     public Integer getId_comment() {
@@ -42,5 +42,29 @@ private Post post;
 
     public void setName(String name) {
         this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
