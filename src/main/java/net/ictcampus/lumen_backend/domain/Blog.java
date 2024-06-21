@@ -22,7 +22,7 @@ public class Blog {
     @Id
     @ReadOnlyProperty
     @Column(name = "ID_Blog")
-    private String id;
+    private Integer id;
 
     @Setter
     @Getter

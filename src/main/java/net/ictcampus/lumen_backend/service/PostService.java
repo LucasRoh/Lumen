@@ -4,11 +4,13 @@ import net.ictcampus.lumen_backend.repository.PostRepository;
 import net.ictcampus.lumen_backend.domain.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
+@Service
 public class PostService {
     private final PostRepository postRepository;
 
@@ -16,8 +18,8 @@ public class PostService {
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
-//Nicht sicher ob int onder string
-    public void update(String id, Post post) {
+
+    public void update(Integer id, Post post) {
         if (!postRepository.existsById(id)) {
             throw new EntityNotFoundException();
         }

@@ -61,4 +61,23 @@ public class BlogController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Blog not found!");
         }
     }
+
+
+    @PostMapping(path = "", consumes = "application/json")
+    public void create(@Valid @RequestBody Blog blog) {
+        try {
+            blogService.create(blog);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create blog!");
+        }
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void delete(@PathVariable Integer id) {
+        try {
+            blogService.deleteById(id);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to delete blog!");
+        }
+    }
 }

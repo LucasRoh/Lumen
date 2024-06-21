@@ -1,12 +1,14 @@
 package net.ictcampus.lumen_backend.service;
 
 import javax.persistence.EntityNotFoundException;
+
 import net.ictcampus.lumen_backend.domain.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import net.ictcampus.lumen_backend.repository.BlogRepository;
+
 import java.util.Optional;
 
 @Service
@@ -41,6 +43,14 @@ public class BlogService {
     public Blog findById(String id) {
         Optional<Blog> subject = blogRepository.findById(id);
         return subject.orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void create(Blog blog) {
+        blogRepository.save(blog);
+    }
+
+    public void deleteById(Integer id) {
+        blogRepository.deleteById(id);
     }
 }
 
