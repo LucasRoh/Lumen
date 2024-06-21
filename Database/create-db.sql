@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS lumen;
 
 CREATE DATABASE lumen;
 
