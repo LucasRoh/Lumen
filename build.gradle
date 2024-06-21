@@ -23,8 +23,7 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
 	implementation 'org.springdoc:springdoc-openapi-security:1.6.13'
 
-	// TODO find runtimeonly for postgres
-	//runtimeOnly 'mysql:mysql-connector-java:8.0.28'
+	runtimeOnly 'org.postgresql:postgresql:42.7.3'
 
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
