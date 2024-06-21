@@ -20,7 +20,7 @@ public class Post {
     @Id
     @ReadOnlyProperty
     @Column(name = "ID_Post")
-    private Integer id_post;
+    private Integer id;
 
     @Setter
     @Getter

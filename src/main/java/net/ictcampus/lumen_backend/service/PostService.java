@@ -24,9 +24,9 @@ public class PostService {
             throw new EntityNotFoundException();
         }
 
-        if (post.getId_post() == null) {
-            post.setId_post(id);
-        } else if (!post.getId_post().equals(id)) {
+        if (post.getId() == null) {
+            post.setId(id);
+        } else if (!post.getId().equals(id)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id in URL does not match " +
                     "ID in body!");
         }

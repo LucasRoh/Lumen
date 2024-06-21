@@ -3,6 +3,7 @@ package net.ictcampus.lumen_backend.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,8 +16,9 @@ public class Comment {
     @Setter
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_comment;
+    @ReadOnlyProperty
+    @Column(name = "ID_Comment")
+    private Integer id;
 
     @Setter
     @Getter
