@@ -1,41 +1,35 @@
-package net.ictcampus.lumen_backend.domain;
+package net.ictcampus.lumen_backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "comment")
 public class Comment {
 
-    @Setter
-    @Getter
     @Id
+    @ReadOnlyProperty
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_comment;
+    @Column(name = "ID_Comment")
+    private Integer id;
 
-    @Setter
-    @Getter
     @NotNull
     @NotBlank
     private String comment;
 
-    @Setter
-    @Getter
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    @JsonBackReference
+    @JoinColumn(name = "ID_Post")
     private Post post;
 
-    @Setter
-    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
-    @JsonBackReference
     private Account account;
 
 }

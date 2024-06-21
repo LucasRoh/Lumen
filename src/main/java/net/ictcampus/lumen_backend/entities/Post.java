@@ -1,4 +1,4 @@
-package net.ictcampus.lumen_backend.domain;
+package net.ictcampus.lumen_backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -11,41 +11,33 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "post")
 public class Post {
 
-    @Setter
-    @Getter
     @Id
     @ReadOnlyProperty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Post")
-    private String id_post;
+    private Integer id;
 
-    @Setter
-    @Getter
     @NotBlank
     @NotNull
     private String answer;
 
-    @Setter
-    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Blog")
     private Blog blog;
 
-    @Setter
-    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
     private Account account;
 
 
-    @Setter
-    @Getter
     @OneToMany(mappedBy = "post")
     @JsonBackReference(value = "commentsReference")
     private Set<Comment> comments = new HashSet<>();
-
 
 }
