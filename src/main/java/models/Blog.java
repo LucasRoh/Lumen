@@ -31,7 +31,7 @@ public class Blog {
 
 
     @ManyToOne
-    @JoinColumn(name = "ID_User")
+    @JoinColumn(name = "ID_Benutzer")
     private User user;
 
 
