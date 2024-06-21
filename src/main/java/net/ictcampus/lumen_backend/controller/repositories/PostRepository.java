@@ -1,6 +1,6 @@
-package controller.repositories;
+package net.ictcampus.lumen_backend.controller.repositories;
 
-import models.Post;
+import net.ictcampus.lumen_backend.models.Post;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, String>{

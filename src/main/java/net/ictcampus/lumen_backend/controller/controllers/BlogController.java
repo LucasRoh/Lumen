@@ -1,9 +1,9 @@
-package controller.controllers;
+package net.ictcampus.lumen_backend.controller.controllers;
 
-import controller.services.BlogService;
+import net.ictcampus.lumen_backend.controller.services.BlogService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import models.Blog;
-import models.Post;
+import net.ictcampus.lumen_backend.models.Blog;
+import net.ictcampus.lumen_backend.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,6 @@ import javax.validation.Valid;
 @Tag(name = "Blogs")
 @RestController
 @RequestMapping("/blogs")
-
 public class BlogController {
 
 

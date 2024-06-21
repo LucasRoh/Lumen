@@ -1,8 +1,7 @@
-package controller.controllers;
+package net.ictcampus.lumen_backend.controller.controllers;
 
-import controller.services.PostService;
-import models.Blog;
-import models.Post;
+import net.ictcampus.lumen_backend.controller.services.PostService;
+import net.ictcampus.lumen_backend.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

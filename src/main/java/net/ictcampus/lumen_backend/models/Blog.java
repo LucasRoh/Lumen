@@ -1,7 +1,9 @@
-package models;
+package net.ictcampus.lumen_backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
@@ -15,21 +17,29 @@ import java.util.Set;
 @Table(name = "blog")
 public class Blog {
 
+    @Setter
+    @Getter
     @Id
     @ReadOnlyProperty
     @Column(name = "ID_Blog")
     private String id;
 
+    @Setter
+    @Getter
     @NotBlank(message = "title can't be blank")
     @NotNull(message = "title is required")
     @Length(max = 100)
     private String title;
 
+    @Setter
+    @Getter
     @NotBlank(message = "question can't be blank")
     @NotNull(message = "question is required")
     private String question;
 
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
     private Account accout;
@@ -38,41 +48,6 @@ public class Blog {
     @OneToMany(mappedBy = "blog")
     @JsonBackReference(value="postsReference")
     private Set<Post> posts = new HashSet<>();
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-
-
-    public Account getAccout() {
-        return accout;
-    }
-
-    public void setAccout(Account accout) {
-        this.accout = accout;
-    }
 
 
 }

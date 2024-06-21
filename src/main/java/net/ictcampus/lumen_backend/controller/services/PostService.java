@@ -1,9 +1,7 @@
-package controller.services;
+package net.ictcampus.lumen_backend.controller.services;
 
-import controller.repositories.BlogRepository;
-import controller.repositories.PostRepository;
-import models.Blog;
-import models.Post;
+import net.ictcampus.lumen_backend.controller.repositories.PostRepository;
+import net.ictcampus.lumen_backend.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

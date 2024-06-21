@@ -1,6 +1,6 @@
-package controller.repositories;
+package net.ictcampus.lumen_backend.controller.repositories;
 
-import models.Comment;
+import net.ictcampus.lumen_backend.models.Comment;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,8 @@
-package models;
+package net.ictcampus.lumen_backend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
@@ -13,66 +15,37 @@ import java.util.Set;
 @Table(name = "post")
 public class Post {
 
+    @Setter
+    @Getter
     @Id
     @ReadOnlyProperty
     @Column(name = "ID_Post")
     private String id_post;
 
+    @Setter
+    @Getter
     @NotBlank
     @NotNull
     private String answer;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Blog")
     private Blog blog;
 
+    @Setter
+    @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
     private Account account;
 
 
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "post")
     @JsonBackReference(value = "commentsReference")
     private Set<Comment> comments = new HashSet<>();
 
 
-    public String getId_post() {
-        return id_post;
-    }
-
-    public void setId_post(String id_post) {
-        this.id_post = id_post;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public Blog getBlog() {
-        return blog;
-    }
-
-    public void setBlog(Blog blog) {
-        this.blog = blog;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
 }
