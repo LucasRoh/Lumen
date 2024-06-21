@@ -12,6 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "post")
 public class Post {
+
     @Id
     @ReadOnlyProperty
     @Column(name = "ID_Post")
