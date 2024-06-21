@@ -1,5 +1,6 @@
 package net.ictcampus.lumen_backend.web.rest;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ictcampus.lumen_backend.service.CommentService;
 import net.ictcampus.lumen_backend.domain.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,43 +14,48 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
+
+@Tag(name = "Comments")
 @RestController
-@RequestMapping("/Comment")
+@RequestMapping("/comments")
 public class CommentController {
     private final CommentService commentService;
-@Autowired
-public CommentController(CommentService commentService){this.commentService = commentService;}
+
+    @Autowired
+    public CommentController(CommentService commentService) {
+        this.commentService = commentService;
+    }
 
 
-    public Iterable<Comment> findAll(){
+    public Iterable<Comment> findAll() {
         try {
             return commentService.findAll();
-        }
-        catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Users not found");
         }
     }
-    public void insertComment(@Valid @RequestBody Comment comment){
+
+    public void insertComment(@Valid @RequestBody Comment comment) {
         try {
             commentService.insertAbility(comment);
-        }
-        catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Conflict");
         }
     }
-    public void updateAbility(@Valid @RequestBody Comment comment){
-        try {commentService.updateAbility(comment);
-        }
-        catch (RuntimeException e){
+
+    public void updateAbility(@Valid @RequestBody Comment comment) {
+        try {
+            commentService.updateAbility(comment);
+        } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
 
     }
-    public void deleteById(@RequestParam("id") Integer id){
+
+    public void deleteById(@RequestParam("id") Integer id) {
         try {
             commentService.deleteById(id);
-        }
-        catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }

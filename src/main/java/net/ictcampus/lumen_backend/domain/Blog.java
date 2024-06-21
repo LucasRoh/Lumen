@@ -45,9 +45,10 @@ public class Blog {
     private Account accout;
 
 
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "blog")
     @JsonBackReference(value="postsReference")
     private Set<Post> posts = new HashSet<>();
-
 
 }
