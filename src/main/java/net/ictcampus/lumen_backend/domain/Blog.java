@@ -1,4 +1,4 @@
-package net.ictcampus.lumen_backend.models;
+package net.ictcampus.lumen_backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 

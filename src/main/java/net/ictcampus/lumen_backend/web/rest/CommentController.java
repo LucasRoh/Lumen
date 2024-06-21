@@ -1,7 +1,7 @@
-package net.ictcampus.lumen_backend.controller.controllers;
+package net.ictcampus.lumen_backend.web.rest;
 
-import net.ictcampus.lumen_backend.controller.services.CommentService;
-import net.ictcampus.lumen_backend.models.Comment;
+import net.ictcampus.lumen_backend.service.CommentService;
+import net.ictcampus.lumen_backend.domain.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;

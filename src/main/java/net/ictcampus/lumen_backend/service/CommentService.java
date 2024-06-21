@@ -1,7 +1,7 @@
-package net.ictcampus.lumen_backend.controller.services;
+package net.ictcampus.lumen_backend.service;
 
-import net.ictcampus.lumen_backend.controller.repositories.CommentRepository;
-import net.ictcampus.lumen_backend.models.Comment;
+import net.ictcampus.lumen_backend.repository.CommentRepository;
+import net.ictcampus.lumen_backend.domain.Comment;
 import org.springframework.stereotype.Service;
 
 @Service

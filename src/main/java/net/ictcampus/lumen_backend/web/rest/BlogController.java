@@ -1,9 +1,9 @@
-package net.ictcampus.lumen_backend.controller.controllers;
+package net.ictcampus.lumen_backend.web.rest;
 
-import net.ictcampus.lumen_backend.controller.services.BlogService;
+import net.ictcampus.lumen_backend.service.BlogService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import net.ictcampus.lumen_backend.models.Blog;
-import net.ictcampus.lumen_backend.models.Post;
+import net.ictcampus.lumen_backend.domain.Blog;
+import net.ictcampus.lumen_backend.domain.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
