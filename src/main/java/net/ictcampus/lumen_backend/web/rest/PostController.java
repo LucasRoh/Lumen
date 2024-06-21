@@ -1,7 +1,7 @@
 package net.ictcampus.lumen_backend.web.rest;
 
 import net.ictcampus.lumen_backend.service.PostService;
-import net.ictcampus.lumen_backend.domain.Post;
+import net.ictcampus.lumen_backend.entities.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class PostController {
     }
 
     @GetMapping(path = "{id}")
-    public Post get(@PathVariable String id) {
+    public Post get(@PathVariable Integer id) {
         try {
             return postService.findById(id);
         } catch (EntityNotFoundException e) {
@@ -39,15 +39,13 @@ public class PostController {
     }
 
     @PutMapping(path = "{id}", consumes = "application/json")
-    public void update(@PathVariable String id, @Valid @RequestBody Post post) {
+    public void update(@PathVariable Integer id, @Valid @RequestBody Post post) {
         try {
             postService.update(id, post);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to update post!");
         }
     }
-
-
 }
 
 

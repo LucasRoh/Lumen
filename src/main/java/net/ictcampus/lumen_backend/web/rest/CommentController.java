@@ -2,7 +2,7 @@ package net.ictcampus.lumen_backend.web.rest;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ictcampus.lumen_backend.service.CommentService;
-import net.ictcampus.lumen_backend.domain.Comment;
+import net.ictcampus.lumen_backend.entities.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;

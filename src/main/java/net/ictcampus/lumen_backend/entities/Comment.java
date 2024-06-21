@@ -1,6 +1,5 @@
-package net.ictcampus.lumen_backend.domain;
+package net.ictcampus.lumen_backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.ReadOnlyProperty;
