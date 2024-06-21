@@ -1,34 +1,33 @@
 package net.ictcampus.lumen_backend.service;
 
+import lombok.RequiredArgsConstructor;
+import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.repository.PostRepository;
-import net.ictcampus.lumen_backend.domain.Post;
+import net.ictcampus.lumen_backend.entities.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
+@RequiredArgsConstructor
+@Service
 public class PostService {
+
     private final PostRepository postRepository;
 
-    @Autowired
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
-//Nicht sicher ob int onder string
-    public void update(String id, Post post) {
+    public void update(Integer id, Post post) {
         if (!postRepository.existsById(id)) {
             throw new EntityNotFoundException();
         }
-
-        if (post.getId_post() == null) {
-            post.setId_post(id);
-        } else if (!post.getId_post().equals(id)) {
+        if (post.getId() == null) {
+            post.setId(id);
+        } else if (!post.getId().equals(id)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id in URL does not match " +
                     "ID in body!");
         }
-
         postRepository.save(post);
     }
 
@@ -36,8 +35,16 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public Post findById(String id) {
+    public Post findById(Integer id) {
         Optional<Post> subject = postRepository.findById(id);
         return subject.orElseThrow(EntityNotFoundException::new);
+    }
+
+    public void create(Post post) {
+        postRepository.save(post);
+    }
+
+    public void deleteById(Integer id) {
+        postRepository.deleteById(id);
     }
 }
