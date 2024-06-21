@@ -17,6 +17,7 @@ public class Comment {
     @Getter
     @Id
     @ReadOnlyProperty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Comment")
     private Integer id;
 

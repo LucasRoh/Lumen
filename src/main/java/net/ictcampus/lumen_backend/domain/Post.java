@@ -19,6 +19,7 @@ public class Post {
     @Getter
     @Id
     @ReadOnlyProperty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Post")
     private Integer id;
 

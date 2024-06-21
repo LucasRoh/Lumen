@@ -21,6 +21,7 @@ public class Blog {
     @Getter
     @Id
     @ReadOnlyProperty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Blog")
     private Integer id;
 
