@@ -1,4 +1,4 @@
-package net.ictcampus.lumen_backend.models;
+package net.ictcampus.lumen_backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "comment")
 public class Comment {
 
     @Setter

@@ -1,4 +1,4 @@
-package net.ictcampus.lumen_backend.models;
+package net.ictcampus.lumen_backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -45,9 +45,10 @@ public class Blog {
     private Account account;
 
 
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "blog")
     @JsonBackReference(value="postsReference")
     private Set<Post> posts = new HashSet<>();
-
 
 }

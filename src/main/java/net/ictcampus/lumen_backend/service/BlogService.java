@@ -1,15 +1,15 @@
-package net.ictcampus.lumen_backend.controller.services;
+package net.ictcampus.lumen_backend.service;
 
-import net.ictcampus.lumen_backend.controller.repositories.BlogRepository;
 import javax.persistence.EntityNotFoundException;
-import net.ictcampus.lumen_backend.models.Blog;
+import net.ictcampus.lumen_backend.domain.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
+import net.ictcampus.lumen_backend.repository.BlogRepository;
 import java.util.Optional;
 
-
+@Service
 public class BlogService {
 
     private final BlogRepository blogRepository;
