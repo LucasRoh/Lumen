@@ -42,7 +42,7 @@ public class Blog {
     @Getter
     @ManyToOne
     @JoinColumn(name = "ID_Account")
-    private Account accout;
+    private Account account;
 
 
     @OneToMany(mappedBy = "blog")
