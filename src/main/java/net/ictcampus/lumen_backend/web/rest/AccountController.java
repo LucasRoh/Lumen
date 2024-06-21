@@ -12,9 +12,10 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.persistence.EntityNotFoundException;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@RestController("/account")
-
+@RestController
+@RequestMapping("/account")
 public class AccountController {
     private final AccountService accountService;
 
@@ -23,6 +24,18 @@ public class AccountController {
     public AccountController(AccountService accountService) {this.accountService = accountService;}
 
     @GetMapping
+    public List<Account> getAccounts() {
+        try {
+            return accountService.getAllAccounts();
+        }
+        catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+
+
+    @GetMapping(path = "{id}")
     public Account getAccount(Integer id) {
         try {
             return accountService.getAccountById(id);

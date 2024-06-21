@@ -26,7 +26,7 @@ public class AccountService {
         return null;
     }
 
-    public Iterable<Account> getAllAccounts() {
+    public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
 
