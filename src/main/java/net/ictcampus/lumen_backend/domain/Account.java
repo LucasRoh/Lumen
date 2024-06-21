@@ -1,25 +1,27 @@
 package net.ictcampus.lumen_backend.domain;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.naming.Name;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="account")
-@Data
+
 public class Account {
 
     @Id
     @ReadOnlyProperty
     @Column(name = "id_account")
-    private int id_account;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_account;
 
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "Name is required")
@@ -30,31 +32,5 @@ public class Account {
     private String password;
 
 
-    // -------------------- GET & SET --------------------------------
-
-
-    public int getId_account() {
-        return id_account;
-    }
-
-    public void setId_account(int id_account) {
-        this.id_account = id_account;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
 
