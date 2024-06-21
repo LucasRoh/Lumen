@@ -2,7 +2,7 @@ package net.ictcampus.lumen_backend.web.rest;
 
 
 import lombok.RequiredArgsConstructor;
-import net.ictcampus.lumen_backend.domain.Account;
+import net.ictcampus.lumen_backend.entities.Account;
 import net.ictcampus.lumen_backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/accounts")
 public class AccountController {
     private final AccountService accountService;
 
@@ -36,7 +36,7 @@ public class AccountController {
 
 
     @GetMapping(path = "{id}")
-    public Account getAccount(Integer id) {
+    public Account getAccount(@PathVariable Integer id) {
         try {
             return accountService.getAccountById(id);
         }

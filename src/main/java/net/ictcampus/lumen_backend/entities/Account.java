@@ -1,4 +1,4 @@
-package net.ictcampus.lumen_backend.domain;
+package net.ictcampus.lumen_backend.entities;
 
 import lombok.*;
 import org.springframework.data.annotation.ReadOnlyProperty;

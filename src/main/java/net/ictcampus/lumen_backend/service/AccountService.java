@@ -2,7 +2,7 @@ package net.ictcampus.lumen_backend.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.ictcampus.lumen_backend.domain.Account;
+import net.ictcampus.lumen_backend.entities.Account;
 import net.ictcampus.lumen_backend.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
