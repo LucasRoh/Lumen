@@ -31,8 +31,8 @@ public class Blog {
 
 
     @ManyToOne
-    @JoinColumn(name = "ID_Benutzer")
-    private User user;
+    @JoinColumn(name = "ID_Account")
+    private Account accout;
 
 
     @OneToMany(mappedBy = "blog")
@@ -64,19 +64,15 @@ public class Blog {
         this.question = question;
     }
 
-    public Set<Post> getPosts() {
-        return posts;
+
+
+    public Account getAccout() {
+        return accout;
     }
 
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
+    public void setAccout(Account accout) {
+        this.accout = accout;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
