@@ -1,20 +1,13 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.istack.NotNull;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 import org.hibernate.validator.constraints.Length;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,13 +23,22 @@ public class Blog {
     @NotBlank(message = "title can't be blank")
     @NotNull(message = "title is required")
     @Length(max = 100)
-    @Schema(description = "Title of the blog")
     private String title;
 
     @NotBlank(message = "question can't be blank")
     @NotNull(message = "question is required")
-    @Schema(description = "Question of the blog")
     private String question;
+
+
+    @ManyToOne
+    @JoinColumn(name = "ID_User")
+    private User user;
+
+
+    @OneToMany(mappedBy = "blog")
+    @JsonBackReference(value="postsReference")
+    private Set<Post> posts = new HashSet<>();
+
 
     public String getId() {
         return id;
@@ -60,5 +62,21 @@ public class Blog {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

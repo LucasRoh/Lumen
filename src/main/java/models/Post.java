@@ -1,4 +1,5 @@
 package models;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
@@ -7,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 @Table(name = "post")
 public class Post {
@@ -26,6 +28,12 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "ID_User")
     private User user;
+
+
+    @OneToMany(mappedBy = "post")
+    @JsonBackReference(value = "commentsReference")
+    private Set<Comment> comments = new HashSet<>();
+
 
     public String getId_post() {
         return id_post;
