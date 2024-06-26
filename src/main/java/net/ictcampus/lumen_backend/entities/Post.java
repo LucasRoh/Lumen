@@ -35,9 +35,9 @@ public class Post {
     @JoinColumn(name = "ID_Account")
     private Account account;
 
-
     @OneToMany(mappedBy = "post")
     @JsonBackReference(value = "commentsReference")
     private Set<Comment> comments = new HashSet<>();
 
 }
+
