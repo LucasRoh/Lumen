@@ -5,6 +5,7 @@ import javax.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import net.ictcampus.lumen_backend.entities.Blog;
+import net.ictcampus.lumen_backend.entities.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,10 @@ public class BlogService {
         return subject.orElseThrow(EntityNotFoundException::new);
     }
 
+    public int count(Integer blogId) {
+        Blog blog = findById(blogId);
+        return blog.getPosts().size();
+    }
     public void create(Blog blog) {
         blogRepository.save(blog);
     }

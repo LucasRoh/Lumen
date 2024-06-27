@@ -40,6 +40,15 @@ public class BlogController {
         }
     }
 
+    @GetMapping(path = "/count/{id}")
+    public Integer count(@PathVariable Integer id) {
+        try {
+            return blogService.count(id);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Blog not found!");
+        }
+    }
+
     @PutMapping(path = "{id}", consumes = "application/json")
     public void update(@PathVariable Integer id, @Valid @RequestBody Blog blog) {
         try {
