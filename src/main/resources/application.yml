@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/Lumen-Database
+        url: jdbc:postgresql://localhost:5432/Lumen
         username: postgres
         password: 1234
     jpa:
