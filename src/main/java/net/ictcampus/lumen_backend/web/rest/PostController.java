@@ -47,7 +47,7 @@ public class PostController {
         }
     }
 
-    @GetMapping(path = "{id}/posts")
+    @GetMapping(path = "{id}/comments")
     public Iterable<Comment> getComments(@PathVariable Integer id) {
         try {
             return postService.findById(id).getComments();

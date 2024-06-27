@@ -3,7 +3,9 @@ package net.ictcampus.lumen_backend.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import net.ictcampus.lumen_backend.entities.Account;
+import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.service.AccountService;
+import net.ictcampus.lumen_backend.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +16,18 @@ import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
     private final AccountService accountService;
+    private final BlogService blogService;
 
 
     @Autowired
-    public AccountController(AccountService accountService) {this.accountService = accountService;}
+    public AccountController(AccountService accountService, BlogService blogService) {this.accountService = accountService;
+        this.blogService = blogService;
+    }
 
     @GetMapping
     public List<Account> getAccounts() {
@@ -41,6 +47,15 @@ public class AccountController {
             return accountService.getAccountById(id);
         }
         catch (EntityNotFoundException e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(path = "{id}/blogs")
+    public Iterable<Blog> getBlogs(@PathVariable Integer id) {
+        try {
+            return accountService.getAccountById(id).getBlogs();
+        }catch(EntityNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
