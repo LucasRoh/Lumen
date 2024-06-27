@@ -1,6 +1,8 @@
-package models;
+package net.ictcampus.lumen_backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
@@ -9,13 +11,17 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "post")
 public class Post {
+
     @Id
     @ReadOnlyProperty
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Post")
-    private String id_post;
+    private Integer id;
 
     @NotBlank
     @NotNull
@@ -26,44 +32,12 @@ public class Post {
     private Blog blog;
 
     @ManyToOne
-    @JoinColumn(name = "ID_Benutzer")
-    private User user;
-
+    @JoinColumn(name = "ID_Account")
+    private Account account;
 
     @OneToMany(mappedBy = "post")
     @JsonBackReference(value = "commentsReference")
     private Set<Comment> comments = new HashSet<>();
 
-
-    public String getId_post() {
-        return id_post;
-    }
-
-    public void setId_post(String id_post) {
-        this.id_post = id_post;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public Blog getBlog() {
-        return blog;
-    }
-
-    public void setBlog(Blog blog) {
-        this.blog = blog;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
+
