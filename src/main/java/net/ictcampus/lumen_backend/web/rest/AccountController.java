@@ -1,7 +1,5 @@
 package net.ictcampus.lumen_backend.web.rest;
 
-
-import lombok.RequiredArgsConstructor;
 import net.ictcampus.lumen_backend.entities.Account;
 import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.service.AccountService;
@@ -38,8 +36,6 @@ public class AccountController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
-
-
 
     @GetMapping(path = "{id}")
     public Account getAccount(@PathVariable Integer id) {
@@ -91,6 +87,16 @@ public class AccountController {
         }
         catch (EntityNotFoundException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+    @PutMapping(path = "{accountId}/imagePath")
+    public void setImagePath(@PathVariable Integer accountId, @RequestParam String imagePath) {
+        try {
+            accountService.setImagePath(accountId, imagePath);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to update image path!");
         }
     }
 

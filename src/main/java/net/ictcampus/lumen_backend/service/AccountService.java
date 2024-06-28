@@ -3,6 +3,7 @@ package net.ictcampus.lumen_backend.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.ictcampus.lumen_backend.entities.Account;
+import net.ictcampus.lumen_backend.entities.Post;
 import net.ictcampus.lumen_backend.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,14 @@ public class AccountService {
     public void deleteAccountById(Integer id) {
         Account deleteAccount = getAccountById(id);
         accountRepository.delete(deleteAccount);
+    }
+
+    public void setImagePath(Integer postId, String imagePath){
+        Account account = accountRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Account not found"));
+
+        account.setImagePath(imagePath);
+
+        accountRepository.save(account);
     }
 
 
