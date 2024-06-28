@@ -20,7 +20,10 @@ INSERT INTO Post (answer, id_blog, id_account) VALUES
                                                    ('HTTPS ist sicherer als HTTP, da es die Kommunikation zwischen dem Client und dem Server verschlüsselt.', 2, 1),
                                                    ('Verwende frische Zutaten und sorge dafür, dass alle Zutaten Raumtemperatur haben, bevor du sie mischst.', 3, 1),
                                                    ('Intervalltraining ist eine gute Methode, um die Ausdauer zu steigern.', 4, 1 ),
-                                                   ('Verwende warmes Wasser mit etwas Essig und trockne die Fenster mit einem Mikrofasertuch.', 5, 1);
+                                                   ('Verwende warmes Wasser mit etwas Essig und trockne die Fenster mit einem Mikrofasertuch.', 5, 1),
+                                                   ('Eventuell könntest du auch mit Zahnpasta versuchen, es kommt aber darauf an, welche Marke!!!', 5, 1),
+                                                   ('Aber beachte: Wenn du die Fenster nicht putzen tust, brauchst du keine Vorhänge zu kaufen :DDD', 5, 1),
+                                                   ('Kommt nicht auf die Version drauf an, am Besten gehts mit dem USB-Stick. Lade dir Rufus spezifisch für dein OS herunter, installiere es auf dem USB-Stick, entscheide dich für ein Image einer Distribution und wähle ein Dateisystem. Dann kannst du einfach den USB-Stick einstecken und im Boot-Vorgang den USB-Stick auswählen.', 1, 1);
 
 INSERT INTO Comment (comment, id_post, id_account) VALUES
                                                        ('Danke, das hat bei der Installation geholfen!', 1, 1),
