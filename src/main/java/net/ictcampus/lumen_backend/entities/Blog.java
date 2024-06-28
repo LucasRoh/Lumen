@@ -10,6 +10,7 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,4 +47,6 @@ public class Blog {
     @JsonBackReference(value="postsReference")
     private Set<Post> posts = new HashSet<>();
 
+    @Column(name = "timestamp", updatable = false, insertable = false)
+    private LocalDateTime erstellungsdatum;
 }
