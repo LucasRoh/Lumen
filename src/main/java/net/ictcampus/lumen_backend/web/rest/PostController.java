@@ -73,10 +73,22 @@ public class PostController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to delete post!");
         }
     }
+
+    @PutMapping(path = "{postId}/likes")
+    public void like(@PathVariable Integer postId, @RequestParam boolean isLike) {
+        try {
+            postService.like(postId, isLike);
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to Like!");
+        }
+    }
+    @GetMapping(path = "user/{userId}/likes")
+    public Integer getLikesForUser(@PathVariable Integer userId) {
+        try{
+            return postService.getLikesForUser(userId);
+        }   catch (RuntimeException e){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "failed to calculate");
+        }
+    }
 }
-
-
-
-
-
 

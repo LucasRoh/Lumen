@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -26,6 +27,9 @@ public class Post {
     @NotBlank
     @NotNull
     private String answer;
+
+    @Min(0)
+    private int likes = 0;
 
     @ManyToOne
     @JoinColumn(name = "ID_Blog")

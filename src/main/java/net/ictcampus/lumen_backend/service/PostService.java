@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -46,5 +47,18 @@ public class PostService {
 
     public void deleteById(Integer id) {
         postRepository.deleteById(id);
+    }
+    public void like(Integer postId, boolean isLike){
+        Post post = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found"));
+        if (isLike) {
+            post.setLikes(post.getLikes() + 1);
+        } else {
+            post.setLikes(post.getLikes() - 1);
+        }
+
+        postRepository.save(post);
+    }
+    public Integer getLikesForUser(Integer UserId){
+        return postRepository.findByUserId(UserId);
     }
 }
