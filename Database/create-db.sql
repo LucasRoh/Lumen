@@ -23,7 +23,8 @@ DROP TABLE IF EXISTS ACCOUNT;
 CREATE TABLE ACCOUNT (
                          ID_Account SERIAL PRIMARY KEY,
                          Name VARCHAR(50),
-                         Password TEXT
+                         Password TEXT,
+                         ImagePath VARCHAR(50) DEFAULT '/assets/images/DefaultAccountImage.png'
 );
 
 CREATE TABLE BLOG (

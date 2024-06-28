@@ -35,3 +35,4 @@ INSERT INTO Comment (comment, id_post, id_account) VALUES
                                                        ('Intervalltraining hat wirklich meine Ausdauer verbessert, danke!', 4,1),
                                                        ('Der Essig hat Wunder gewirkt. Danke für den Tipp!', 5,1 );
 
+
