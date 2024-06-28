@@ -41,6 +41,7 @@ CREATE TABLE BLOG (
 CREATE TABLE POST (
                       ID_Post SERIAL PRIMARY KEY,
                       Answer TEXT,
+                      Likes INT default 0,
                       ID_Blog INT,
                       Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                       CONSTRAINT fk_post_blog
