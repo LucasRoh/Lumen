@@ -48,5 +48,5 @@ public class Blog {
     private Set<Post> posts = new HashSet<>();
 
     @Column(name = "timestamp", updatable = false, insertable = false)
-    private LocalDateTime erstellungsdatum;
+    private LocalDateTime timestamp;
 }

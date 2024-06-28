@@ -34,6 +34,6 @@ public class Comment {
     private Account account;
 
     @Column(name = "timestamp", updatable = false, insertable = false)
-    private LocalDateTime erstellungsdatum;
+    private LocalDateTime timestamp;
 
 }

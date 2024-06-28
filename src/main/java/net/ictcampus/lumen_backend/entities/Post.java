@@ -41,7 +41,7 @@ public class Post {
     private Set<Comment> comments = new HashSet<>();
 
     @Column(name = "timestamp", updatable = false, insertable = false)
-    private LocalDateTime erstellungsdatum;
+    private LocalDateTime timestamp;
 
 }
 
