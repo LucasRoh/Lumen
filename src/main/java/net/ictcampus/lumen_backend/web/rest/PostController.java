@@ -1,11 +1,9 @@
 package net.ictcampus.lumen_backend.web.rest;
 
 import lombok.RequiredArgsConstructor;
-import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.entities.Comment;
 import net.ictcampus.lumen_backend.service.PostService;
 import net.ictcampus.lumen_backend.entities.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -75,9 +73,9 @@ public class PostController {
     }
 
     @PutMapping(path = "{postId}/likes")
-    public void like(@PathVariable Integer postId, @RequestParam boolean isLike) {
+    public void setLike(@PathVariable Integer postId, @RequestParam boolean isLike) {
         try {
-            postService.like(postId, isLike);
+            postService.setLike(postId, isLike);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to Like!");
         }

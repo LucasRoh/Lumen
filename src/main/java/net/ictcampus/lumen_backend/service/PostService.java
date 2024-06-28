@@ -1,16 +1,13 @@
 package net.ictcampus.lumen_backend.service;
 
 import lombok.RequiredArgsConstructor;
-import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.repository.PostRepository;
 import net.ictcampus.lumen_backend.entities.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -48,7 +45,7 @@ public class PostService {
     public void deleteById(Integer id) {
         postRepository.deleteById(id);
     }
-    public void like(Integer postId, boolean isLike){
+    public void setLike(Integer postId, boolean isLike){
         Post post = postRepository.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found"));
         if (isLike) {
             post.setLikes(post.getLikes() + 1);
