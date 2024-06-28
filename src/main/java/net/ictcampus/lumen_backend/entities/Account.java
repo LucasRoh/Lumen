@@ -38,6 +38,8 @@ public class Account {
     @JsonBackReference(value = "blogsReference")
     private Set<Blog> blogs = new HashSet<>();
 
+    @Column(name = "imagepath")
+    private String imagePath;
 
 }
 

@@ -7,6 +7,7 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -31,5 +32,8 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "ID_Account")
     private Account account;
+
+    @Column(name = "timestamp", updatable = false, insertable = false)
+    private LocalDateTime timestamp;
 
 }

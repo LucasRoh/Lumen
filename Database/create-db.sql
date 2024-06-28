@@ -23,15 +23,17 @@ DROP TABLE IF EXISTS ACCOUNT;
 CREATE TABLE ACCOUNT (
                          ID_Account SERIAL PRIMARY KEY,
                          Name VARCHAR(50),
-                         Password TEXT
+                         Password TEXT,
+                         ImagePath VARCHAR(50) DEFAULT '/assets/images/DefaultAccountImage.png'
 );
 
 CREATE TABLE BLOG (
                       ID_Blog SERIAL PRIMARY KEY,
                       Title VARCHAR(100),
-                      Question TEXT
+                      Question TEXT,
+                      Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    ,ID_Account INT,
+    ID_Account INT,
                       CONSTRAINT fk_blog_account
                           FOREIGN KEY (ID_Account) REFERENCES ACCOUNT(ID_Account)
 
@@ -40,11 +42,13 @@ CREATE TABLE BLOG (
 CREATE TABLE POST (
                       ID_Post SERIAL PRIMARY KEY,
                       Answer TEXT,
+                      Likes INT default 0,
                       ID_Blog INT,
+                      Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                       CONSTRAINT fk_post_blog
-                          FOREIGN KEY (ID_Blog) REFERENCES BLOG(ID_Blog)
+                          FOREIGN KEY (ID_Blog) REFERENCES BLOG(ID_Blog),
 
-    ,ID_Account INT,
+    ID_Account INT,
                       CONSTRAINT fk_post_account
                           FOREIGN KEY (ID_Account) REFERENCES ACCOUNT(ID_Account)
 
@@ -54,17 +58,15 @@ CREATE TABLE COMMENT (
                          ID_Comment SERIAL PRIMARY KEY,
                          Comment TEXT,
                          ID_Post INT,
+                         Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                          CONSTRAINT fk_comment_post
-                             FOREIGN KEY (ID_Post) REFERENCES POST(ID_Post)
+                             FOREIGN KEY (ID_Post) REFERENCES POST(ID_Post),
 
-    ,ID_Account INT,
+    ID_Account INT,
                          CONSTRAINT fk_comment_account
                              FOREIGN KEY (ID_Account) REFERENCES ACCOUNT(ID_Account)
 
 );
 
 
-SELECT * FROM Comment;
-SELECT * FROM POST;
-SELECT * FROM BLOG;
-SELECT * FROM Account;
+
