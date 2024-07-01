@@ -1,6 +1,8 @@
 package net.ictcampus.lumen_backend.service;
 
 import lombok.RequiredArgsConstructor;
+import net.ictcampus.lumen_backend.entities.Blog;
+import net.ictcampus.lumen_backend.repository.BlogRepository;
 import net.ictcampus.lumen_backend.repository.PostRepository;
 import net.ictcampus.lumen_backend.entities.Post;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final BlogRepository blogRepository;
 
     public void update(Integer id, Post post) {
         if (!postRepository.existsById(id)) {
@@ -42,6 +45,12 @@ public class PostService {
         postRepository.save(post);
     }
 
+    public void createPostByBlogId(Integer blogId, Post post) {
+        Blog blog = blogRepository.findById(blogId)
+                        .orElseThrow(()-> new EntityNotFoundException("Blog not found"));
+        post.setBlog(blog);
+        postRepository.save(post);
+    }
     public void deleteById(Integer id) {
         postRepository.deleteById(id);
     }

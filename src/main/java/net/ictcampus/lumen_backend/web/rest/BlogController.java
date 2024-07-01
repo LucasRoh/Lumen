@@ -5,6 +5,7 @@ import net.ictcampus.lumen_backend.service.BlogService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.entities.Post;
+import net.ictcampus.lumen_backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 public class BlogController {
 
     private final BlogService blogService;
+    private final PostService postService;
 
     @GetMapping(path = "")
     public Iterable<Blog> getAll() {
@@ -74,6 +76,15 @@ public class BlogController {
             blogService.create(blog);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create blog!");
+        }
+    }
+
+    @PostMapping(path = "{id}/post", consumes = "application/json")
+    public void createPost(@PathVariable Integer id, @Valid @RequestBody Post post) {
+        try {
+            postService.createPostByBlogId(id, post);
+        }catch (RuntimeException e){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create post by BlogId!");
         }
     }
 
