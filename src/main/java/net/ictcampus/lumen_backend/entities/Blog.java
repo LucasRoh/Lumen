@@ -42,6 +42,10 @@ public class Blog {
     @JoinColumn(name = "ID_Account")
     private Account account;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_Tag")
+    private Tags tag;
+
 
     @OneToMany(mappedBy = "blog")
     @JsonBackReference(value="postsReference")
