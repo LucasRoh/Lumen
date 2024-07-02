@@ -1,11 +1,13 @@
 package net.ictcampus.lumen_backend.web.rest;
 
 import lombok.RequiredArgsConstructor;
+import net.ictcampus.lumen_backend.entities.Tags;
 import net.ictcampus.lumen_backend.service.BlogService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import net.ictcampus.lumen_backend.entities.Blog;
 import net.ictcampus.lumen_backend.entities.Post;
 import net.ictcampus.lumen_backend.service.PostService;
+import net.ictcampus.lumen_backend.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ public class BlogController {
 
     private final BlogService blogService;
     private final PostService postService;
+    private final TagService tagService;
 
     @GetMapping(path = "")
     public Iterable<Blog> getAll() {
@@ -66,6 +69,19 @@ public class BlogController {
             return blogService.findById(id).getPosts();
         } catch (EntityNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Blog not found!");
+        }
+    }
+
+    @PostMapping(path = "/{tagId}", consumes = "application/json")
+    public void create(@PathVariable Integer tagId, @Valid @RequestBody Blog blog) {
+        try {
+            Tags tag = tagService.findById(tagId);
+            blog.setTag(tag);
+            blogService.create(blog);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Tag not found!");
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create Blog!");
         }
     }
 
