@@ -119,11 +119,11 @@ INSERT INTO Tags (title) VALUES
 INSERT INTO Blog (title, question, id_account, id_tag ) VALUES
     ('Wie installiere ich Linux?', 'Kann jemand die Schritte zur Installation von Linux erläutern? Welche Version von Linux soll ich kaufen? Ich habe so viel positive Sachen gehört, dass ich es selbst ausprobieren will. Wär toll, wenn mir jemand da weiterhelfen kann!', 2, 1),
     ('Was ist der Unterschied zwischen HTTPS und HTTP?', 'Kann jemand den Unterschied zwischen HTTPS und HTTP erklären? Welche Vorteile bietet HTTPS gegenüber HTTP?', 3, 1),
-    ('Was ist ein Sigma?', 'Ich werde von alles immer Sigma genannt, was bedeutet das?', 1, 5),
-    ('Wie werde ich Brainrot los?', 'Ich bin leider schlimm gebrainrottet und ich wollte fragen wie ich wieder normal werde...', 1, 5),
     ('Wie backe ich einen perfekten Kuchen?', 'Welche Tipps gibt es, um einen Kuchen luftig und lecker zu machen?', 3, 6),
     ('Wie verbessere ich meine Ausdauer beim Laufen?', 'Welche Trainingsmethoden helfen, die Ausdauer beim Laufen zu steigern?', 2, 3),
-    ('Effektive Methoden zum Fensterputzen?', 'Wie kann man Fenster streifenfrei putzen?', 4, 2);
+    ('Effektive Methoden zum Fensterputzen?', 'Wie kann man Fenster streifenfrei putzen?', 4, 2),
+    ('Was ist ein Sigma?', 'Ich werde von alles immer Sigma genannt, was bedeutet das?', 1, 5),
+    ('Wie werde ich Brainrot los?', 'Ich bin leider schlimm gebrainrottet und ich wollte fragen wie ich wieder normal werde...', 1, 5);
 
 INSERT INTO Post (answer, id_blog, id_account) VALUES
      ('Du kannst Linux von einer Live-CD oder einem USB-Stick installieren. Folge den Anweisungen auf dem Bildschirm.', 1, 1),

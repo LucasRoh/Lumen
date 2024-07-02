@@ -26,7 +26,7 @@ CREATE TABLE ACCOUNT (
                          ID_Account SERIAL PRIMARY KEY,
                          Name VARCHAR(50),
                          Password TEXT,
-                         ImagePath VARCHAR(80) DEFAULT '/assets/images/DefaultAccountImage.png'
+                         ImagePath TEXT DEFAULT '/assets/images/DefaultAccountImage.png'
 );
 
 CREATE TABLE TAGS (
