@@ -2,8 +2,10 @@ package net.ictcampus.lumen_backend.service;
 
 import lombok.RequiredArgsConstructor;
 import net.ictcampus.lumen_backend.entities.Blog;
+import net.ictcampus.lumen_backend.entities.Post;
 import net.ictcampus.lumen_backend.repository.CommentRepository;
 import net.ictcampus.lumen_backend.entities.Comment;
+import net.ictcampus.lumen_backend.repository.PostRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final PostRepository postRepository;
 
     public void update(Integer id, Comment comment) {
         if (!commentRepository.existsById(id)) {
@@ -40,6 +43,13 @@ public class CommentService {
     }
 
     public void create(Comment comment) {
+        commentRepository.save(comment);
+    }
+
+    public void createCommentByPostId(Integer postId, Comment comment) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(EntityNotFoundException::new);
+        comment.setPost(post);
         commentRepository.save(comment);
     }
 
