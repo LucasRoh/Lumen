@@ -2,6 +2,7 @@ package net.ictcampus.lumen_backend.web.rest;
 
 import lombok.RequiredArgsConstructor;
 import net.ictcampus.lumen_backend.entities.Comment;
+import net.ictcampus.lumen_backend.service.CommentService;
 import net.ictcampus.lumen_backend.service.PostService;
 import net.ictcampus.lumen_backend.entities.Post;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 public class PostController {
 
     private final PostService postService;
+    private final CommentService commentService;
 
     @GetMapping(path = "")
     public Iterable<Post> getAll() {
@@ -60,6 +62,15 @@ public class PostController {
             postService.create(post);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create post!");
+        }
+    }
+
+    @PostMapping(path = "{id}/comment", consumes = "application/json")
+    public void createCommentByPostId(@PathVariable Integer id, @RequestBody Comment comment) {
+        try {
+            commentService.createCommentByPostId(id, comment);
+        }catch (RuntimeException e){
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Failed to create comment!");
         }
     }
 
