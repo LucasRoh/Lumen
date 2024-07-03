@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import net.ictcampus.lumen_backend.repository.BlogRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,6 +49,11 @@ public class BlogService {
     }
     public void create(Blog blog) {
         blogRepository.save(blog);
+    }
+
+    // In BlogService.java
+    public List<Blog> findByTagTitle(String tagTitle) {
+        return blogRepository.findByTag_Title(tagTitle);
     }
 
     public void deleteById(Integer id) {

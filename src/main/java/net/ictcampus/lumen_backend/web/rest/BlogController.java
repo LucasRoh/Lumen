@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Tag(name = "Blogs")
@@ -97,6 +98,14 @@ public class BlogController {
         blog.setTag(tag);
         blogService.create(blog);
     }
+
+    // In BlogController.java
+    @GetMapping(path = "/tag/{tagTitle}")
+    public List<Blog> getBlogsByTag(@PathVariable String tagTitle) {
+        return blogService.findByTagTitle(tagTitle);
+    }
+
+
 
     @PostMapping(path = "", consumes = "application/json")
     public void create(@Valid @RequestBody Blog blog) {
