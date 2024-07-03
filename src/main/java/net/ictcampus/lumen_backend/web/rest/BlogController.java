@@ -85,6 +85,18 @@ public class BlogController {
         }
     }
 
+    @PostMapping(path = "/create/{tagTitle}", consumes = "application/json")
+    public void createWithTagName(@PathVariable String tagTitle, @Valid @RequestBody Blog blog) {
+        String formattedTagTitle = tagTitle.substring(0, 1).toUpperCase() + tagTitle.substring(1).toLowerCase();
+        Tags tag = tagService.findByTitle(formattedTagTitle);
+        if (tag == null) {
+            tag = new Tags();
+            tag.setTitle(formattedTagTitle);
+            tagService.create(tag);
+        }
+        blog.setTag(tag);
+        blogService.create(blog);
+    }
 
     @PostMapping(path = "", consumes = "application/json")
     public void create(@Valid @RequestBody Blog blog) {

@@ -19,6 +19,8 @@ public class TagService {
         return tagRepository.findAll();
     }
 
+
+
     public Tags findById(Integer id) {
         Optional<Tags> subject = tagRepository.findById(id);
         return subject.orElseThrow(EntityNotFoundException::new);
@@ -26,6 +28,9 @@ public class TagService {
 
     public void create(Tags tags) {
         tagRepository.save(tags);
+    }
+    public Tags findByTitle(String title) {
+        return tagRepository.findByTitle(title).orElse(null);
     }
 
     public void deleteById(Integer id) {
